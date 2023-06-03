@@ -45,13 +45,6 @@ class ThreadPool {
             ThreadPool* this_tp;
             void* thread_id;
         } ThreadArgs;
-
-        static void* pthread_worker_wrapper(void* object) {
-            ThreadArgs* ta = reinterpret_cast<ThreadArgs*>(object);
-            ta->this_tp->worker_wrapper(ta->thread_id);
-            free(ta);
-            return NULL;
-        }
         
         /**
          * @brief Destroy the Thread Pool object
@@ -72,6 +65,12 @@ class ThreadPool {
         std::vector<pthread_cond_t*> thread_cond_vars;
         std::vector<bool> thread_dispatch_indicators; //false indicates that thread is done and waiting for new job. true indicates that thread should take a job from queue/thread is running with a job.
         workerFunction wf; // The function that the user of this library wishes to execute in each Thread. 
+        static void* pthread_worker_wrapper(void* object) {
+            ThreadArgs* ta = reinterpret_cast<ThreadArgs*>(object);
+            ta->this_tp->worker_wrapper(ta->thread_id);
+            free(ta);
+            return NULL;
+        }
 
         /**
          * @brief 
