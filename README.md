@@ -11,6 +11,12 @@ void add_job(T job);
 ```
 *Configure:* In *thread_pool_test.cpp* you can change number of jobs created (edit for loop bounds) and also the number of threads in the pool (edit ThreadPool ctor arg).
 
-*Compile: clang++ -std=c++14 main.cpp thread_pool.cpp thread_pool_test.cpp -o thread_pool
+*Compile:* 
+```
+clang++ -std=c++14 main.cpp thread_pool.cpp thread_pool_test.cpp -o thread_pool
+```
 
-*Run: ```./thread_pool``` 
+*Run:* 
+```
+./thread_pool
+```
