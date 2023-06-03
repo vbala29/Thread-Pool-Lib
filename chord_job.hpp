@@ -7,6 +7,3 @@
 typedef struct {
      int val;
  } ChordJob;
- 
-
-void tp_test();

@@ -5,8 +5,8 @@
  */
 
 #include "thread_pool.hpp"
-#include "../src/chord_job.hpp"
 #include <unistd.h>
+#include "chord_job.hpp"
 
 void initMutexAndCondAttr(pthread_mutex_t& mutex, pthread_mutexattr_t& attr, pthread_cond_t& cond_var) {
     if (pthread_mutexattr_init(&attr) != 0) {
